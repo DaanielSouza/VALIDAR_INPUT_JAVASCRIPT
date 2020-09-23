@@ -1,0 +1,31 @@
+# função javascript
+
+function validaNumeros(elemento,tecla,e) {
+        let cnh = elemento; //recebe o campo
+        let numeros = Array(48,49,50,51,52,53,54,55,56,57); //array de teclas permiitidas
+        let validador = false; // validador, caso seja necessário
+        let limite = 11; // limita o tamanho da classe
+
+        if (cnh.value.length >= 11) {
+            e.preventDefault();
+            return; //Para a execução do código caso chegue ao limite de campos.
+        }
+        
+        if (tecla > 47 && tecla < 58)
+        {
+           for (let i = 0;i < limite;i++) {
+                if (tecla == numeros[i]) {
+                    validador = true;
+                    break; // Para a execução do código caso uma das teclas do array seja encontrada.
+                }
+            }
+        }
+
+        if (validador == false) {
+            e.preventDefault();
+            return; //Caso seja um valor inválido, cancela a execução do código.
+        }
+    }
+    
+    #input com chamada de função
+    <input type="text" onkeypress="validaNumeros(this,event.keyCode,event)">
